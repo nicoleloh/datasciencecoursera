@@ -56,5 +56,6 @@ names(completeDf) <- gsub(",", "", names(completeDf))
 # Drop unuse columns resulted from the merge
 completeDf <- completeDf[, 2:89, drop=TRUE]
 
+# Creates a second, independent tidy data set with the average of each variable for each activity and each subject
 tidyDf = ddply(completeDf, c("Subject","Activity"), numcolwise(mean))
 write.table(tidyDf, file="./UCI HAR Dataset/TidyDataSet.txt", row.name=FALSE)
